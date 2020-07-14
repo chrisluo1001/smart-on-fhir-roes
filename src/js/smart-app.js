@@ -39,6 +39,10 @@
           }
           var nm = lname + "," + fname;
           console.log(nm);
+          
+          var dobs = patient.birthDate.split("-");
+          var dob = dobs[0]-1700 + dobs[1] + dobs[2];
+          console.log(dob);
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
