@@ -56,8 +56,9 @@
           var ssn = "123456789";
           var icn  = "123456icn";
 
-          var roes_url = "https://roes_server.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" + ssn + "&"
-          + icn + "&" + nm + "&" + dob + "&" + l1 + "&" + ci + "&" + st + "&" + zp + "&" + dz + "&" + l5 + "&" + sn;
+          var roes_url = "https://roes_server.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" + "SSN=" + ssn + "&"
+          + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
+          + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
 
           console.log(roes_url);
 
