@@ -51,10 +51,10 @@
 
           var l5 = lname.substring(0, 5);
           console.log(l5);
-          var sn = "554";
+          var sn = "668";
 
-          var ssn = "123456789";
-          var icn  = "123456icn";
+          var ssn = "505438765";
+          var icn  = "1013180785V389525";
 
           var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" + "SSN=" + ssn + "&"
           + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
@@ -149,6 +149,46 @@
     } else {
       return undefined;
     }
+  }
+
+  window.redirectToRoes = function(patient) {
+          var dz = getPractitioner(patient);
+
+          //var byCodes = smart.byCodes(obv, 'code');
+          //var gender = patient.gender;
+          var fname = '';
+          var lname = '';
+
+          if (typeof patient.name[0] !== 'undefined') {
+            fname = patient.name[0].given.join(' ');
+            lname = patient.name[0].family.join(' ');
+          }
+          var nm = lname + "," + fname;
+          console.log(nm);
+
+          var dobs = patient.birthDate.split("-");
+          var dob = dobs[0]-1700 + dobs[1] + dobs[2];
+          console.log(dob);
+
+          var l1 = patient.address[0].line;
+          var ci = patient.address[0].city;
+          var st = "1^" + patient.address[0].state;
+          var zp = patient.address[0].postalCode;
+
+          var l5 = lname.substring(0, 5);
+          console.log(l5);
+          var sn = "668";
+
+          var ssn = "505438765";
+          var icn  = "1013180785V389525";
+
+          var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" + "SSN=" + ssn + "&"
+          + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
+          + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
+
+          console.log(roes_url);
+
+          window.location.replace(roes_url);
   }
 
   window.drawVisualization = function(p) {
