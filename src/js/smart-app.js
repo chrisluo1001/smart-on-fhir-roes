@@ -104,7 +104,7 @@
     }
     var dz = pReference.split("/");
     console.log(dz[1]);
-    return dz;
+    return dz[1];
   }
 
   function defaultPatient(){
