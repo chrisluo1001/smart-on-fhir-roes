@@ -60,7 +60,7 @@
           + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
           + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
 
-          console.log(roes_url);
+          //console.log(roes_url);
 
           //window.location.replace(roes_url);
 
