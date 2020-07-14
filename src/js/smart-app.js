@@ -56,11 +56,13 @@
           var ssn = "123456789";
           var icn  = "123456icn";
 
-          var roes_url = "https://roes_server.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" + "SSN=" + ssn + "&"
+          var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" + "SSN=" + ssn + "&"
           + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
           + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
 
           console.log(roes_url);
+
+          window.location.replace(roes_url);
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
