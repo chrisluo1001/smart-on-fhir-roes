@@ -25,13 +25,11 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
-          
-          var DZ = patient.careProvider[0];
-          console.log(DZ);
-          
+
+          var dz = getPractitioner(patient);
+
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
-
           var fname = '';
           var lname = '';
 
@@ -75,6 +73,15 @@
     return ret.promise();
 
   };
+
+  function getPractitioner(patient) {
+    if (typeof patient.careProvider[0] !== 'undefined') {
+      var pReference = patient.careProvider[0].reference;
+    }
+    var dz = pReference.split("/");
+    console.log(dz[1]);
+    return dz;
+  }
 
   function defaultPatient(){
     return {
