@@ -47,7 +47,7 @@
   }
 
   window.redirectToRoes = function(patient) {
-      var dz = getPractitioner(patient);
+      //var dz = getPractitioner(patient);
       var fname = '';
       var lname = '';
 
@@ -67,10 +67,11 @@
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
 
-      var l5 = lname.substring(0, 5);
+      //var l5 = lname.substring(0, 5);
       console.log(l5);
       var sn = "668";
-
+      var dz = "6729895";
+      var l5 = "NALAM";
       var ssn = "505438765";
       var icn  = "1013180785V389525";
 
