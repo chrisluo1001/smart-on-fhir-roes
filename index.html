@@ -39,6 +39,7 @@
       extractData().then(
         //Build Roes url and redirect to this url if extractData was success
         function(p) {
+           localStorage.setItem("debug", "FHIR.*");
           //redirectToRoes(p);
         },
 
