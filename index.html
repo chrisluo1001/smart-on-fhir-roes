@@ -6,9 +6,9 @@
     <title>chrisluo1001 roes SMART on FHIR app </title>
 
     <!--
-      Temporarily disable cerner-smart-embeddable-lib
+      Temporarily disable cerner-smart-embeddable-lib -->
       <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
-    -->
+    
   </head>
   <body>
     <div id='errors'>
@@ -20,10 +20,10 @@
     </div>
     <!-- Required JS files to enable this page to embed within an MPage -->
     <!--
-      Temporarily disable cerner-smart-embeddable-lib
+      Temporarily disable cerner-smart-embeddable-lib -->
       <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
       <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
-    -->
+    
 
     <!-- Application-level javascript-->
     <script src='./src/js/smart-app.js'></script>
@@ -39,7 +39,7 @@
       extractData().then(
         //Build Roes url and redirect to this url if extractData was success
         function(p) {
-          //redirectToRoes(p);
+          redirectToRoes(p);
         },
 
         //Display 'Failed to call FHIR Service' if extractData failed
