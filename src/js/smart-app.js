@@ -23,7 +23,7 @@
                   });
 
         $.when(pt, obv).fail(onError);
-
+        localStorage.setItem("debug", "FHIR.*");
         $.when(pt, obv).done(function(patient, obv) {
           ret.resolve(patient);
         });
