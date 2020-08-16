@@ -106,8 +106,9 @@
       var zp = patient.address[0].postalCode;
 
       var userName = patient.careProvider[0].display;
-      var l5 = userName.split(",").substring(0, 5);
-      alert(userName);
+      var userLastName = userName.split(",");
+      var l5 = userLastName.substring(0, 5);
+      alert(l5);
       //var l5 = lname.substring(0, 5);
       console.log(l5);
       var sn = "668";
