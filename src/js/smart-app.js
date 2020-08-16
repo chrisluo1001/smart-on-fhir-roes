@@ -109,8 +109,7 @@
       }
       var userLastName = userName.split(",")[0];
       var l5 = userLastName.substring(0, 5);
-      alert(l5);
-      //var l5 = lname.substring(0, 5);
+      
       console.log(l5);
       var sn = "668";
       var dz = "6729895";
