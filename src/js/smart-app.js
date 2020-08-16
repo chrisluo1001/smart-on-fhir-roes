@@ -23,6 +23,7 @@
                   });
 
         $.when(pt, obv).fail(onError);
+
         $.when(pt, obv).done(function(patient, obv) {
           ret.resolve(patient);
         });
@@ -37,16 +38,54 @@
   };
 
   function getPractitioner(patient) {
-    if (typeof patient.careProvider[0] !== 'undefined') {
-      var pReference = patient.careProvider[0].reference;
-    }
-    var dz = pReference.split("/");
-    console.log(dz[1]);
-    return dz[1];
+      if (typeof patient.careProvider[0] !== 'undefined') {
+        var pReference = patient.careProvider[0].reference;
+      }
+      var dz = pReference.split("/");
+      console.log(dz[1]);
+      return dz[1];
+  }
+
+  function getPatientICN(patient) {
+      const dsvIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.787.0.0';
+      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.4.349';
+
+      let patientId = 'getting';
+      let found = false;
+
+      console.log('extracting the patient identifier ICN');
+      for(let i = 0; i < patient.identifier.length; i++) {
+        if (patient.identifier[i].system === dsvIcnIdentifierSystemName) {
+          patientId = patient.identifier[i].value;
+          found = true;
+          console.log(patientId);
+          break;
+        }
+      }
+
+      if(!found) {
+        console.log('ICN not found.  extracting patient identifier MRN');
+        for(let i = 0; i < patient.identifier.length; i++) {
+          if (patient.identifier[i].system === dsvIdentifierSystemName) {
+            patientId = patient.identifier[i].value;
+            found = true;
+            console.log(patientId);
+            break;
+          }
+        }
+      }
+
+      if(!found) {
+        console.log('Not patient identifier found');
+      }
+
+      return patientId;
+
   }
 
   window.redirectToRoes = function(patient) {
       //var dz = getPractitioner(patient);
+      //var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
 
@@ -66,6 +105,8 @@
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
 
+      var userName = patient.careProvider[0].display.split(",").substring(0, 5);
+      alert(userName);
       //var l5 = lname.substring(0, 5);
       console.log(l5);
       var sn = "668";
@@ -81,7 +122,7 @@
 
       console.log(roes_url);
 
-      //window.location.replace(roes_url);
+      window.location.replace(roes_url);
   };
 
 })(window);
