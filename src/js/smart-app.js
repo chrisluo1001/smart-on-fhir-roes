@@ -107,7 +107,7 @@
       if (typeof patient.careProvider[0] !== 'undefined') {
         var userName = patient.careProvider[0].display;
       }
-      var userLastName = userName.split(",");
+      var userLastName = userName.split(",")[0];
       var l5 = userLastName.substring(0, 5);
       alert(l5);
       //var l5 = lname.substring(0, 5);
