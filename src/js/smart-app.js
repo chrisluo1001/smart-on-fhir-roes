@@ -84,7 +84,7 @@
   }
 
   window.redirectToRoes = function(patient) {
-      //var dz = getPractitioner(patient);
+      var dz = getPractitioner(patient);
       //var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
@@ -104,8 +104,9 @@
       var ci = patient.address[0].city;
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
-
-      var userName = patient.careProvider[0].display;
+      if (typeof patient.careProvider[0] !== 'undefined') {
+        var userName = patient.careProvider[0].display;
+      }
       var userLastName = userName.split(",");
       var l5 = userLastName.substring(0, 5);
       alert(l5);
