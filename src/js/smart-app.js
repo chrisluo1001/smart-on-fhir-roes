@@ -105,7 +105,8 @@
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
 
-      var userName = patient.careProvider[0].display.split(",").substring(0, 5);
+      var userName = patient.careProvider[0].display;
+      var l5 = userName.split(",").substring(0, 5);
       alert(userName);
       //var l5 = lname.substring(0, 5);
       console.log(l5);
