@@ -86,7 +86,7 @@
 
   window.redirectToRoes = function(patient) {
       var dz = getPractitioner(patient);
-      //var icn = getPatientICN(patient);
+      var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
 
