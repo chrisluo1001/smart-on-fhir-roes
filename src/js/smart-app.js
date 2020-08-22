@@ -11,6 +11,7 @@
       if (smart.hasOwnProperty('patient')) {
         alert('onReady');
         alert(JSON.stringify(smart));
+        console.log(JSON.stringify(smart));
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
@@ -89,6 +90,7 @@
 
   window.redirectToRoes = function(patient) {
       alert(JSON.stringify(patient));
+      console.log(JSON.stringify(patient));
       var dz = getPractitioner(patient);
       var icn = getPatientICN(patient);
       var fname = '';
