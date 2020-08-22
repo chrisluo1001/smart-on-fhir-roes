@@ -9,6 +9,8 @@
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+        alert('onReady');
+        alert(JSON.stringify(smart));
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
@@ -28,6 +30,7 @@
           ret.resolve(patient);
         });
       } else {
+        alert("No patient exists");
         onError();
       }
     }
@@ -85,6 +88,7 @@
   }
 
   window.redirectToRoes = function(patient) {
+      alert(JSON.stringify(patient));
       var dz = getPractitioner(patient);
       var icn = getPatientICN(patient);
       var fname = '';
@@ -125,7 +129,7 @@
 
       console.log(roes_url);
 
-      window.location.replace(roes_url);
+      //window.location.replace(roes_url);
   };
 
 })(window);
