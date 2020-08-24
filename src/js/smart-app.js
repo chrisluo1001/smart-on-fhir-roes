@@ -93,8 +93,8 @@
       console.log(JSON.stringify(patient));
       //var dz = getPractitioner(patient);
       //var icn = getPatientICN(patient);
-      var fname = '';
-      var lname = '';
+      var fname = 'test';
+      var lname = 'test';
 
       if (typeof patient.name[0] !== 'undefined') {
         //fname = patient.name[0].given.join(' ');
@@ -111,9 +111,10 @@
       var ci = patient.address[0].city;
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
-      if (typeof patient.careProvider[0] !== 'undefined') {
-        var userName = patient.careProvider[0].display;
-      }
+//       if (typeof patient.careProvider[0] !== 'undefined') {
+//         var userName = patient.careProvider[0].display;
+//       }
+      var userName = "test, test";
       var userLastName = userName.split(",")[0];
       var l5 = userLastName.substring(0, 5);
       
