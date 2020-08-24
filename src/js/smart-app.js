@@ -131,7 +131,7 @@
       + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
 
       console.log(roes_url);
-
+      alert(roes_url);
       window.location.replace(roes_url);
   };
 
