@@ -91,8 +91,8 @@
   window.redirectToRoes = function(patient) {
       alert(JSON.stringify(patient));
       console.log(JSON.stringify(patient));
-      var dz = getPractitioner(patient);
-      var icn = getPatientICN(patient);
+      //var dz = getPractitioner(patient);
+      //var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
 
