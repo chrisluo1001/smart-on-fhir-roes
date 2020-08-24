@@ -97,8 +97,8 @@
       var lname = '';
 
       if (typeof patient.name[0] !== 'undefined') {
-        fname = patient.name[0].given.join(' ');
-        lname = patient.name[0].family.join(' ');
+        //fname = patient.name[0].given.join(' ');
+        //lname = patient.name[0].family.join(' ');
       }
       var nm = lname + "," + fname;
       console.log(nm);
