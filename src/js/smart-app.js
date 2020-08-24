@@ -93,8 +93,8 @@
       console.log(JSON.stringify(patient));
       //var dz = getPractitioner(patient);
       //var icn = getPatientICN(patient);
-      var fname = 'MHPATNT';
-      var lname = 'NORMA';
+      var fname = 'NORMA';
+      var lname = 'MHPATNT';
 
       if (typeof patient.name[0] !== 'undefined') {
         //fname = patient.name[0].given.join(' ');
