@@ -93,9 +93,10 @@
       console.log(JSON.stringify(patient));
       //var dz = getPractitioner(patient);
       //var icn = getPatientICN(patient);
-      var fname = 'NORMA';
-      var lname = 'MHPATNT';
-
+//       var fname = 'NORMA';
+//       var lname = 'MHPATNT';
+      var fname = 'Rick';
+      var lname = 'James';
       if (typeof patient.name[0] !== 'undefined') {
         //fname = patient.name[0].given.join(' ');
         //lname = patient.name[0].family.join(' ');
@@ -124,7 +125,8 @@
       var l5 = "NALAM";
       //var ssn = "505335261";
       var ssn = "";
-      var icn  = "1013180785V389525";
+      //var icn  = "1013180785V389525";
+      var icn  = "1008524111V177862";
 
       var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" 
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
