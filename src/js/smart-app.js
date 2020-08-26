@@ -134,7 +134,7 @@
 
       console.log(roes_url);
       alert(roes_url);
-      window.location.replace(roes_url);
+      //window.location.replace(roes_url);
   };
 
 })(window);
