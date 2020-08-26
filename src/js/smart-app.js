@@ -92,7 +92,8 @@
       alert(JSON.stringify(patient));
       console.log(JSON.stringify(patient));
       //var dz = getPractitioner(patient);
-      //var icn = getPatientICN(patient);
+      var icn = getPatientICN(patient);
+      alert(icn);
 //       var fname = 'NORMA';
 //       var lname = 'MHPATNT';
 //       var fname = 'Rick';
@@ -136,7 +137,7 @@
 
       console.log(roes_url);
       alert(roes_url);
-      //window.location.replace(roes_url);
+      window.location.replace(roes_url);
   };
 
 })(window);
