@@ -52,8 +52,8 @@
 
   function getPatientICN(patient) {
       const dsvIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.787.0.0';
-      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.42.10001.100001.12'
-      //const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.4.349';
+      //const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.42.10001.100001.12'
+      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.4.349';
 
       let patientId = 'getting';
       let found = false;
@@ -95,11 +95,13 @@
       //var icn = getPatientICN(patient);
 //       var fname = 'NORMA';
 //       var lname = 'MHPATNT';
-      var fname = 'Rick';
-      var lname = 'James';
+//       var fname = 'Rick';
+//       var lname = 'James';
+      var fname = '';
+      var lname = '';
       if (typeof patient.name[0] !== 'undefined') {
-        //fname = patient.name[0].given.join(' ');
-        //lname = patient.name[0].family.join(' ');
+        fname = patient.name[0].given;
+        lname = patient.name[0].family;
       }
       var nm = lname + "," + fname;
       console.log(nm);
