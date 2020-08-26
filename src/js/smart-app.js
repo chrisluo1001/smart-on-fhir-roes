@@ -129,7 +129,7 @@
       //var ssn = "505335261";
       var ssn = "";
       //var icn  = "1013180785V389525";
-      var icn  = "1008524111V177862";
+      //var icn  = "1008524111V177862";
 
       var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" 
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
