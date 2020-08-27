@@ -8,8 +8,8 @@
     }
 
     function onReady(smart)  {
-      alert.log(smart.userId);
-      alert.log(smart.tokenResponse.access_token);
+      alert(smart.userId);
+      alert(smart.tokenResponse.access_token);
       var settings = {
           "async": true,
           //"url": userId,
@@ -23,7 +23,7 @@
       }
 
       $.ajax(settings).done(function (response) {
-          alert.log("practitioner ajax call ");
+          alert("practitioner ajax call ");
           console.log(response);
           alert(JSON.stringify(response));
       })
