@@ -29,7 +29,7 @@
       })
       
       if (smart.hasOwnProperty('patient')) {
-        alert('onReady');
+        alert('version 2');
         alert(JSON.stringify(smart));
         alert(JSON.stringify(smart.user));
         console.log(JSON.stringify(smart));
