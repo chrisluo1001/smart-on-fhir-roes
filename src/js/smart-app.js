@@ -11,19 +11,10 @@
       if (smart.hasOwnProperty('patient')) {
         alert('onReady');
         alert(JSON.stringify(smart));
+        alert(JSON.stringify(smart.user));
         console.log(JSON.stringify(smart));
         var patient = smart.patient;
         var pt = patient.read();
-//         var obv = smart.patient.api.fetchAll({
-//                     type: 'Observation',
-//                     query: {
-//                       code: {
-//                         $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
-//                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-//                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
-//                       }
-//                     }
-//                   });
 
         $.when(pt).fail(onError);
 
@@ -126,7 +117,6 @@
       var sn = "668";
       var dz = "6729895";
       var l5 = "NALAM";
-      //var ssn = "505335261";
       var ssn = "";
       //var icn  = "1013180785V389525";
       //var icn  = "1008524111V177862";
