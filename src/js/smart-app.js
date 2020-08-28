@@ -29,7 +29,6 @@
       })
       
       if (smart.hasOwnProperty('patient')) {
-        alert('version 2');
         alert(JSON.stringify(smart));
         alert(JSON.stringify(smart.user));
         console.log(JSON.stringify(smart));
@@ -51,7 +50,7 @@
         onError();
       }
     }
-
+    alert('version 3');
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
