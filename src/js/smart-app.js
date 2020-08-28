@@ -12,7 +12,7 @@
       alert(smart.tokenResponse.access_token);
       var settings = {
           "async": true,
-          "url": userId,
+          "url": smart.userId,
           //"url": "https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Patient/12724069",
           "method": "GET",
           "headers": {
