@@ -13,7 +13,6 @@
       var settings = {
           "async": true,
           "url": smart.userId,
-          //"url": "https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Patient/12724069",
           "method": "GET",
           "headers": {
               "Content-Type": "application/json",
@@ -26,7 +25,16 @@
           alert("practitioner ajax call ");
           console.log(response);
           alert(JSON.stringify(response));
+          var dz = response.id;
+          if (typeof response.name[0] !== 'undefined') {
+            var lName = response.name[0].family;
+            var l5 = lName.substring(0, 5);
+          }
       })
+      .fail(function(data) {
+        if ( data.responseCode )
+        console.log( data.responseCode );
+      });
       
       if (smart.hasOwnProperty('patient')) {
         alert(JSON.stringify(smart));
@@ -67,7 +75,6 @@
 
   function getPatientICN(patient) {
       const dsvIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.787.0.0';
-      //const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.42.10001.100001.12'
       const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.4.349';
 
       let patientId = 'getting';
@@ -130,20 +137,11 @@
       var ci = patient.address[0].city;
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
-//       if (typeof patient.careProvider[0] !== 'undefined') {
-//         var userName = patient.careProvider[0].display;
-//       }
-      var userName = "test, test";
-      var userLastName = userName.split(",")[0];
-      var l5 = userLastName.substring(0, 5);
       
       console.log(l5);
       var sn = "668";
       var dz = "6729895";
       var l5 = "NALAM";
-      var ssn = "";
-      //var icn  = "1013180785V389525";
-      //var icn  = "1008524111V177862";
 
       var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" 
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
