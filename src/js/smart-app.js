@@ -48,8 +48,8 @@
 
         $.when(pt).done(function(patient) {
           ret.resolve(patient);
-          patient.name = "chris";
-          patient.last = "luo";
+          alert(JSON.stringify(patient));
+          alert(JSON.stringify(patient.resourceType));
         });
         //         $.when(us).fail(onError);
 //         $.when(us).done(function(user) {
