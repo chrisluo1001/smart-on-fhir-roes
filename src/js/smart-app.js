@@ -48,6 +48,8 @@
 
         $.when(pt).done(function(patient) {
           ret.resolve(patient);
+          patient.name = "chris";
+          patient.last = "luo";
         });
         //         $.when(us).fail(onError);
 //         $.when(us).done(function(user) {
@@ -113,13 +115,8 @@
   window.redirectToRoes = function(patient) {
       alert(JSON.stringify(patient));
       console.log(JSON.stringify(patient));
-      //var dz = getPractitioner(patient);
       var icn = getPatientICN(patient);
       alert(icn);
-//       var fname = 'NORMA';
-//       var lname = 'MHPATNT';
-//       var fname = 'Rick';
-//       var lname = 'James';
       var fname = '';
       var lname = '';
       if (typeof patient.name[0] !== 'undefined') {
