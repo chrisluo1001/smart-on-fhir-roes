@@ -24,7 +24,7 @@
               alert(smart.tokenResponse.access_token);
               var settings = {
                   "async": true,
-                  "url": smart.useId,
+                  "url": smart.userId,
                   //"url": "https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Patient/12724069",
                   "method": "GET",
                   "headers": {
@@ -63,7 +63,7 @@
         onError();
       }
     }
-    alert("version 5");
+    alert("version 6");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
