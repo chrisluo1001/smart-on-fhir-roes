@@ -9,7 +9,7 @@
 
     function onReady(smart)  {  
       alert(JSON.stringify(smart));
-      alert(JSON.stringify(smart.user));
+      //alert(JSON.stringify(smart.user));
       if (smart.hasOwnProperty('patient')) {
         console.log(JSON.stringify(smart));
         var patient = smart.patient;
@@ -37,6 +37,7 @@
               $.ajax(settings).done(function (response) {
                 console.log("prationer ajax call ");
                 console.log(response);
+                alert(JSON.stringify(response));
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
                   //var lName = "Yellowstone"
@@ -62,7 +63,7 @@
         onError();
       }
     }
-    alert("version 4");
+    alert("version 5");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
