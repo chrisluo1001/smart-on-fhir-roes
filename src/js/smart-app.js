@@ -42,9 +42,14 @@
                   //var lName = "Yellowstone"
                   patient.l5 = lName.substring(0, 5);
                 }
+                if (typeof response.identifier[0] !== 'undefined') {
+                  alert(response.identifier[0].value);
+                  var sn = response.identifier[0].value;
+                }
                 //var lName = "Yellowstone"
                 //patient.l5 = lName.substring(0, 5);
                 patient.dz = response.id;
+                patient.sn = sn;
                 alert(JSON.stringify(patient));
                 alert(JSON.stringify(patient.resourceType));
                 ret.resolve(patient);
@@ -144,9 +149,10 @@
 
       //var userLastName = userName.split(",")[0];
       console.log(l5);
-      var sn = "668";
+      //var sn = "668";
       var dz = patient.dz;
       var l5 = patient.l5;
+      var sn = patient.sn;
       //var ssn = "505335261";
       //var icn  = "1013180785V389525";
 
