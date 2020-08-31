@@ -9,6 +9,7 @@
 
     function onReady(smart)  {  
       alert(JSON.stringify(smart));
+      alert(JSON.stringify(smart.user));
       if (smart.hasOwnProperty('patient')) {
         console.log(JSON.stringify(smart));
         var patient = smart.patient;
@@ -19,8 +20,8 @@
         
         $.when(pt).done(function(patient) {
             if (smart.hasOwnProperty('userId')) {
-              console.log(smart.userId);
-              console.log(smart.tokenResponse.access_token);
+              alert(smart.userId);
+              alert(smart.tokenResponse.access_token);
               var settings = {
                   "async": true,
                   //"url": userId,
