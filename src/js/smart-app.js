@@ -7,77 +7,82 @@
       ret.reject();
     }
 
-    function onReady(smart)  {
-      alert(smart.userId);
-      alert(smart.tokenResponse.access_token);
+    function onReady(smart)  {  
+      alert(JSON.stringify(smart));
+      if (smart.hasOwnProperty('patient')) {
+        console.log(JSON.stringify(smart));
+        var patient = smart.patient;
+        var pt = patient.read();
+//         var user = smart.user;
+//         var us = user.read();
+        $.when(pt).fail(onError);
+        
+        $.when(pt).done(function(patient) {
+            if (smart.hasOwnProperty('userId')) {
+              console.log(smart.userId);
+              console.log(smart.tokenResponse.access_token);
+              var settings = {
+                  "async": true,
+                  //"url": userId,
+                  "url": "https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Patient/12724069",
+                  "method": "GET",
+                  "headers": {
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "Authorization": "Bearer " + smart.tokenResponse.access_token
+                  },
+              }
+
+              $.ajax(settings).done(function (response) {
+                console.log("prationer ajax call ");
+                console.log(response);
+                if (typeof response.name[0] !== 'undefined') {
+                  var lName = response.name[0].family;
+                  //var lName = "Yellowstone"
+                  patient.l5 = lName.substring(0, 5);
+                }
+                //var lName = "Yellowstone"
+                //patient.l5 = lName.substring(0, 5);
+                patient.dz = response.id;
+                alert(JSON.stringify(patient));
+                alert(JSON.stringify(patient.resourceType));
+                ret.resolve(patient);
+              })
+            } else {
+              onError();
+            }
+        });
+      } else {
+        onError();
+      }
+    }
+    alert("version 4");
+    FHIR.oauth2.ready(onReady, onError);
+    return ret.promise();
+  };
+
+  function getPractitioner(patient) {
+      console.log(patient.userId);
+      console.log(patient.tokenResponse.id_token);
       var settings = {
           "async": true,
-          "url": smart.userId,
+          "url": patient.useId,
           "method": "GET",
           "headers": {
               "Content-Type": "application/json",
               "Accept": "application/json",
-              "Authorization": "Bearer " + smart.tokenResponse.access_token
+              "Authorization": "Bearer " + patient.tokenResponse.id_token
           },
       }
 
       $.ajax(settings).done(function (response) {
-          alert("practitioner ajax call ");
-          console.log(response);
-          alert(JSON.stringify(response));
-          var dz = response.id;
-          if (typeof response.name[0] !== 'undefined') {
-            var lName = response.name[0].family;
-            var l5 = lName.substring(0, 5);
-          }
+          console.log(response)
       })
-      .fail(function(data) {
-        if ( data.responseCode )
-        console.log( data.responseCode );
-      });
-      
-      if (smart.hasOwnProperty('patient')) {
-        alert(JSON.stringify(smart));
-        alert(JSON.stringify(smart.user));
-        console.log(JSON.stringify(smart));
-        var patient = smart.patient;
-        var pt = patient.read();
-        var user = smart.user;
-        var us = user.read();
-        $.when(pt).fail(onError);
-
-        $.when(pt).done(function(patient) {
-          ret.resolve(patient);
-          alert(JSON.stringify(patient));
-          alert(JSON.stringify(patient.resourceType));
-        });
-        //         $.when(us).fail(onError);
-//         $.when(us).done(function(user) {
-//           ret.resolve(user);
-//         });
-      } else {
-        alert("No patient exists");
-        onError();
-      }
-    }
-    alert('version 3');
-    FHIR.oauth2.ready(onReady, onError);
-    return ret.promise();
-
-  };
-
-  function getPractitioner(patient) {
-      if (typeof patient.careProvider[0] !== 'undefined') {
-        var pReference = patient.careProvider[0].reference;
-      }
-      var dz = pReference.split("/");
-      console.log(dz[1]);
-      return dz[1];
   }
 
   function getPatientICN(patient) {
       const dsvIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.787.0.0';
-      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.4.349';
+      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.42.10001.100001.12'
 
       let patientId = 'getting';
       let found = false;
@@ -113,12 +118,13 @@
   }
 
   window.redirectToRoes = function(patient) {
-      alert(JSON.stringify(patient));
-      console.log(JSON.stringify(patient));
+      //alert(JSON.stringify(patient));
+      //console.log(JSON.stringify(patient));
+      //getPractitioner(patient);
       var icn = getPatientICN(patient);
-      alert(icn);
       var fname = '';
       var lname = '';
+
       if (typeof patient.name[0] !== 'undefined') {
         fname = patient.name[0].given;
         lname = patient.name[0].family;
@@ -134,18 +140,21 @@
       var ci = patient.address[0].city;
       var st = "1^" + patient.address[0].state;
       var zp = patient.address[0].postalCode;
-      
+
+      //var userLastName = userName.split(",")[0];
       console.log(l5);
       var sn = "668";
-      var dz = "6729895";
-      var l5 = "NALAM";
+      var dz = patient.dz;
+      var l5 = patient.l5;
+      //var ssn = "505335261";
+      //var icn  = "1013180785V389525";
 
-      var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient&" 
+      var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient" + "&"
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
       + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
 
       console.log(roes_url);
-      alert(roes_url);
+
       window.location.replace(roes_url);
   };
 
