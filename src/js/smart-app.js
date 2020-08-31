@@ -24,7 +24,7 @@
               alert(smart.tokenResponse.access_token);
               var settings = {
                   "async": true,
-                  "url": userId,
+                  "url": patient.useId,
                   //"url": "https://fhir-ehr-code.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d/Patient/12724069",
                   "method": "GET",
                   "headers": {
@@ -127,6 +127,7 @@
       //alert(JSON.stringify(patient));
       //console.log(JSON.stringify(patient));
       //getPractitioner(patient);
+      alert(JSON.stringify(smart.user));
       var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
