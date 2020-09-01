@@ -128,7 +128,7 @@
       //alert(JSON.stringify(patient));
       //console.log(JSON.stringify(patient));
       //getPractitioner(patient);
-      alert(JSON.stringify(smart.user));
+      alert(JSON.stringify(patient));
       var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
