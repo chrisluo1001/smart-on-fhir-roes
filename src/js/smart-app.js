@@ -38,11 +38,10 @@
                 console.log("prationer ajax call ");
                 console.log(response);
                 alert(JSON.stringify(response));
-//                 if (typeof response.name[0] !== 'undefined') {
-//                   var lName = response.name[0].family;
-//                   //var lName = "Yellowstone"
-//                   patient.l5 = lName.substring(0, 5);
-//                 }
+                if (typeof response.name[0] !== 'undefined') {
+                  var lName = response.name[0].family;
+                  patient.l5 = lName.substring(0, 5);
+                }
                 if (typeof response.identifier[0] !== 'undefined') {
                   alert(response.identifier[0].value);
                   var sn = response.identifier[0].value;
