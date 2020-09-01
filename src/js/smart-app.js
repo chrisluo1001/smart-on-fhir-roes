@@ -130,7 +130,7 @@
       var icn = getPatientICN(patient);
       var fname = '';
       var lname = '';
-
+      alert(icn);
       if (typeof patient.name[0] !== 'undefined') {
         fname = patient.name[0].given;
         lname = patient.name[0].family;
