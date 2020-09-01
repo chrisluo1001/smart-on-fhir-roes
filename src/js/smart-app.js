@@ -47,7 +47,6 @@
                   var sn = response.identifier[0].value;
                 }
                 //var lName = "Yellowstone"
-                //patient.l5 = lName.substring(0, 5);
                 patient.dz = response.id;
                 patient.sn = sn;
                 alert(JSON.stringify(patient));
