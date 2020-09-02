@@ -61,7 +61,7 @@
         onError();
       }
     }
-    alert("version 8");
+    alert("version 9");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -87,7 +87,7 @@
 
   function getPatientICN(patient) {
       const dsvIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.787.0.0';
-      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.3.42.10001.100001.12'
+      const dsvIcnIdentifierSystemName = 'urn:oid:2.16.840.1.113883.4.349'
 
       let patientId = 'getting';
       let found = false;
@@ -141,17 +141,17 @@
       var dobs = patient.birthDate.split("-");
       var dob = dobs[0]-1700 + dobs[1] + dobs[2];
       console.log(dob);
-
-      var l1 = patient.address[0].line;
-      var ci = patient.address[0].city;
-      var st = "1^" + patient.address[0].state;
-      var zp = patient.address[0].postalCode;
-
+      if (typeof patient.address[0] !== 'undefined') {
+        var l1 = patient.address[0].line;
+        var ci = patient.address[0].city;
+        var st = "1^" + patient.address[0].state;
+        var zp = patient.address[0].postalCode;  
+      }
       //var userLastName = userName.split(",")[0];
       console.log(l5);
       //var sn = "668";
       var dz = patient.dz;
-      var l5 = patient.l5;
+      if (typeof patient.l5 !== 'undefined') var l5 = patient.l5.toUpperCase();;
       var sn = patient.sn;
       //var ssn = "505335261";
       //var icn  = "1013180785V389525";
