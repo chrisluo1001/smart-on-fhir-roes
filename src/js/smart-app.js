@@ -61,7 +61,7 @@
         onError();
       }
     }
-    alert("version 9");
+    alert("version 10");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -131,7 +131,7 @@
       var fname = '';
       var lname = '';
       alert(icn);
-      if (typeof patient.name[0] !== 'undefined') {
+      if (typeof patient.name[0] !== 'undefined' ) {
         fname = patient.name[0].given;
         lname = patient.name[0].family;
       }
@@ -141,7 +141,7 @@
       var dobs = patient.birthDate.split("-");
       var dob = dobs[0]-1700 + dobs[1] + dobs[2];
       console.log(dob);
-      if (typeof patient.address[0] !== 'undefined') {
+      if (typeof patient.address !== 'undefined' && patient.address != null) {
         var l1 = patient.address[0].line;
         var ci = patient.address[0].city;
         var st = "1^" + patient.address[0].state;
