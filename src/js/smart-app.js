@@ -7,17 +7,15 @@
       ret.reject();
     }
 
-    function onReady(smart)  {  
+    function onReady(smart)  {
       alert(JSON.stringify(smart));
       //alert(JSON.stringify(smart.user));
       if (smart.hasOwnProperty('patient')) {
         console.log(JSON.stringify(smart));
         var patient = smart.patient;
         var pt = patient.read();
-//         var user = smart.user;
-//         var us = user.read();
         $.when(pt).fail(onError);
-        
+
         $.when(pt).done(function(patient) {
             if (smart.hasOwnProperty('userId')) {
               alert(smart.userId);
@@ -58,10 +56,44 @@
             }
         });
       } else {
-        onError();
+              alert("patient without context");
+              alert(smart.userId);
+              alert(smart.tokenResponse.access_token);
+              var settings = {
+                  "async": true,
+                  "url": smart.userId,
+                  "method": "GET",
+                  "headers": {
+                      "Content-Type": "application/json",
+                      "Accept": "application/json",
+                      "Authorization": "Bearer " + smart.tokenResponse.access_token
+                  },
+              }
+
+              $.ajax(settings).done(function (response) {
+                console.log("prationer ajax call ");
+                console.log(response);
+                alert(JSON.stringify(response));
+                if (typeof response.name[0] !== 'undefined') {
+                  var lName = response.name[0].family;
+                  patient.l5 = lName.substring(0, 5);
+                }
+                if (typeof response.identifier[0] !== 'undefined') {
+                  alert(response.identifier[0].value);
+                  var sn = response.identifier[0].value;
+                }
+                //var lName = "Yellowstone"
+                patient.dz = response.id;
+                patient.sn = sn;
+                patient.noContext = true;
+                alert(JSON.stringify(patient));
+                alert(JSON.stringify(patient.resourceType));
+                ret.resolve(patient);
+              })   
+        //onError();
       }
     }
-    alert("version 10");
+    alert("version 11");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -123,42 +155,40 @@
   }
 
   window.redirectToRoes = function(patient) {
-      //alert(JSON.stringify(patient));
-      //console.log(JSON.stringify(patient));
-      //getPractitioner(patient);
       alert(JSON.stringify(patient));
-      var icn = getPatientICN(patient);
-      var fname = '';
-      var lname = '';
-      alert(icn);
-      if (typeof patient.name[0] !== 'undefined' ) {
-        fname = patient.name[0].given;
-        lname = patient.name[0].family;
-      }
-      var nm = lname + "," + fname;
-      console.log(nm);
-
-      var dobs = patient.birthDate.split("-");
-      var dob = dobs[0]-1700 + dobs[1] + dobs[2];
-      console.log(dob);
-      if (typeof patient.address !== 'undefined' && patient.address != null) {
-        var l1 = patient.address[0].line;
-        var ci = patient.address[0].city;
-        var st = "1^" + patient.address[0].state;
-        var zp = patient.address[0].postalCode;  
-      }
-      //var userLastName = userName.split(",")[0];
       console.log(l5);
       //var sn = "668";
       var dz = patient.dz;
       if (typeof patient.l5 !== 'undefined') var l5 = patient.l5.toUpperCase();;
       var sn = patient.sn;
-      //var ssn = "505335261";
-      //var icn  = "1013180785V389525";
+      if (patient.noContext) {
+        var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3home" + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
+      }
+      else {
+        var icn = getPatientICN(patient);
+        var fname = '';
+        var lname = '';
+        alert(icn);
+        if (typeof patient.name[0] !== 'undefined' ) {
+          fname = patient.name[0].given;
+          lname = patient.name[0].family;
+        }
+        var nm = lname + "," + fname;
+        console.log(nm);
 
-      var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient" + "&"
+        var dobs = patient.birthDate.split("-");
+        var dob = dobs[0]-1700 + dobs[1] + dobs[2];
+        console.log(dob);
+        if (typeof patient.address !== 'undefined' && patient.address != null) {
+          var l1 = patient.address[0].line;
+          var ci = patient.address[0].city;
+          var st = "1^" + patient.address[0].state;
+          var zp = patient.address[0].postalCode;
+        }
+        var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient" + "&"
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
       + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
+      }
 
       console.log(roes_url);
       alert(roes_url);
