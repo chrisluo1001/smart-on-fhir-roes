@@ -76,13 +76,13 @@
                 alert(JSON.stringify(response));
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
-                  patient.l5 = lName.substring(0, 5);
+                  alert(lName);
+                  if (lName != null) patient.l5 = lName.substring(0, 5);
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   alert(response.identifier[0].value);
                   var sn = response.identifier[0].value;
                 }
-                //var lName = "Yellowstone"
                 patient.dz = response.id;
                 patient.sn = sn;
                 patient.noContext = true;
@@ -93,7 +93,7 @@
         //onError();
       }
     }
-    alert("version 11");
+    alert("version 12");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
