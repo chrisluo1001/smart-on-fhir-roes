@@ -74,9 +74,9 @@
                 console.log("prationer ajax call ");
                 console.log(response);
                 alert(JSON.stringify(response));
+                var patient = {} ;
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
-                  alert(lName);
                   if (lName != null) patient.l5 = lName.substring(0, 5);
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
@@ -93,7 +93,7 @@
         //onError();
       }
     }
-    alert("version 12");
+    alert("version 13");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
