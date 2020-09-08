@@ -8,7 +8,7 @@
     }
 
     function onReady(smart)  {
-      alert(JSON.stringify(smart));
+      //alert(JSON.stringify(smart));
       //alert(JSON.stringify(smart.user));
       if (smart.hasOwnProperty('patient')) {
         console.log(JSON.stringify(smart));
@@ -18,8 +18,8 @@
 
         $.when(pt).done(function(patient) {
             if (smart.hasOwnProperty('userId')) {
-              alert(smart.userId);
-              alert(smart.tokenResponse.access_token);
+              //alert(smart.userId);
+              //alert(smart.tokenResponse.access_token);
               var settings = {
                   "async": true,
                   "url": smart.userId,
@@ -35,7 +35,7 @@
               $.ajax(settings).done(function (response) {
                 console.log("prationer ajax call ");
                 console.log(response);
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
                   patient.l5 = lName.substring(0, 5);
@@ -47,8 +47,8 @@
                 //var lName = "Yellowstone"
                 patient.dz = response.id;
                 patient.sn = sn;
-                alert(JSON.stringify(patient));
-                alert(JSON.stringify(patient.resourceType));
+                //alert(JSON.stringify(patient));
+                //alert(JSON.stringify(patient.resourceType));
                 ret.resolve(patient);
               })
             } else {
@@ -56,9 +56,9 @@
             }
         });
       } else {
-              alert("patient without context");
-              alert(smart.userId);
-              alert(smart.tokenResponse.access_token);
+              //alert("patient without context");
+              //alert(smart.userId);
+              //alert(smart.tokenResponse.access_token);
               var settings = {
                   "async": true,
                   "url": smart.userId,
@@ -73,27 +73,26 @@
               $.ajax(settings).done(function (response) {
                 console.log("prationer ajax call ");
                 console.log(response);
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
                 var patient = {} ;
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
                   if (lName != null) patient.l5 = lName.substring(0, 5);
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
-                  alert(response.identifier[0].value);
+                  //alert(response.identifier[0].value);
                   var sn = response.identifier[0].value;
                 }
                 patient.dz = response.id;
                 patient.sn = sn;
                 patient.noContext = true;
-                alert(JSON.stringify(patient));
-                alert(JSON.stringify(patient.resourceType));
+                //alert(JSON.stringify(patient));
                 ret.resolve(patient);
               })   
         //onError();
       }
     }
-    alert("version 13");
+    alert("version 14");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -155,7 +154,7 @@
   }
 
   window.redirectToRoes = function(patient) {
-      alert(JSON.stringify(patient));
+      //alert(JSON.stringify(patient));
       console.log(l5);
       //var sn = "668";
       var dz = patient.dz;
@@ -168,7 +167,7 @@
         var icn = getPatientICN(patient);
         var fname = '';
         var lname = '';
-        alert(icn);
+        //alert(icn);
         if (typeof patient.name[0] !== 'undefined' ) {
           fname = patient.name[0].given;
           lname = patient.name[0].family;
@@ -191,7 +190,7 @@
       }
 
       console.log(roes_url);
-      alert(roes_url);
+      //alert(roes_url);
       window.location.replace(roes_url);
   };
 
