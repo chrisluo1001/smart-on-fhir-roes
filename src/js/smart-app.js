@@ -41,7 +41,7 @@
                   patient.l5 = lName.substring(0, 5);
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
-                  alert(response.identifier[0].value);
+                  //alert(response.identifier[0].value);
                   var sn = response.identifier[0].value;
                 }
                 //var lName = "Yellowstone"
@@ -92,7 +92,7 @@
         //onError();
       }
     }
-    alert("version 14");
+    alert("version 15");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
