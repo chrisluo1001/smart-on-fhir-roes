@@ -90,7 +90,7 @@
         //onError();
       }
     }
-    alert("version 15");
+    alert("version 16");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -216,37 +216,37 @@
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.icn === "undefined" || patient.icn === ""):{
+           case (typeof icn === "undefined" || icn === ""):{
               alert('patient.icn ');
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.dob === "undefined" || patient.dob === ""):{
+           case (typeof dob === "undefined" || dob === ""):{
               alert('patient.dob ');
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.nm === "undefined" || patient.nm === ""):{
+           case (typeof nm === "undefined" || nm === ""):{
               alert('patient.nm ');
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.l1 === "undefined" || patient.l1 === ""):{
+           case (typeof l1 === "undefined" || l1 === ""):{
               alert('patient.l1 ');
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.ci === "undefined" || patient.ci === ""):{
+           case (typeof ci === "undefined" || ci === ""):{
               alert('patient.ci ');
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.st === "undefined" || patient.st === ""):{
+           case (typeof st === "undefined" || st === ""):{
               alert('patient.st ');
               var roes_url = "Not available";
               break;
            }
-           case (typeof patient.zp === "undefined" || patient.zp === ""):{
+           case (typeof zp === "undefined" || zp === ""):{
               alert('patient.zp ');
               var roes_url = "Not available";
               break;
@@ -254,7 +254,7 @@
         }
       }
 
-      //alert(roes_url);
+      alert(roes_url);
       if (roes_url !== "Not available") window.location.replace(roes_url);
   };
 
