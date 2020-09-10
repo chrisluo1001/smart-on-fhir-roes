@@ -158,8 +158,22 @@
       var sn = patient.sn;
       if (patient.noContext) {
         var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3home" + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
-        if (sn == 'undefined' || sn == '' || dz == 'undefined' || dz == '' || l5 == 'undefined' || l5 == '') {
-          var roes_url = "Not available";
+        switch (true){
+           case (typeof patient.l5 === "undefined" || patient.l5 === ""):{
+              alert('patient.i5 ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.dz === "undefined" || patient.dz === ""):{
+              alert('patient.dz ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.sn === "undefined" || patient.sn === ""):{
+              alert('patient.sn ');
+              var roes_url = "Not available";
+              break;
+           }
         }
       }
       else {
@@ -186,10 +200,57 @@
         var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient" + "&"
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
       + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
-        if (l1 == 'undefined' || l1 == '' || ci == 'undefined' || ci == '' || st == 'undefined' || st == '' || zp == 'undefined' || zp == '' 
-        || dob == 'undefined' || dob == '' || icn == 'undefined' || icn == '' || sn == 'undefined' || sn == '' || dz == 'undefined' || dz == ''
-        || l5 == 'undefined' || l5 == '') {
-        var roes_url = "Not available";
+        switch (true){
+           case (typeof patient.l5 === "undefined" || patient.l5 === ""):{
+              alert('patient.l5 ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.dz === "undefined" || patient.dz === ""):{
+              alert('patient.dz ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.sn === "undefined" || patient.sn === ""):{
+              alert('patient.sn ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.icn === "undefined" || patient.icn === ""):{
+              alert('patient.icn ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.dob === "undefined" || patient.dob === ""):{
+              alert('patient.dob ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.nm === "undefined" || patient.nm === ""):{
+              alert('patient.nm ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.l1 === "undefined" || patient.l1 === ""):{
+              alert('patient.l1 ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.ci === "undefined" || patient.ci === ""):{
+              alert('patient.ci ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.st === "undefined" || patient.st === ""):{
+              alert('patient.st ');
+              var roes_url = "Not available";
+              break;
+           }
+           case (typeof patient.zp === "undefined" || patient.zp === ""):{
+              alert('patient.zp ');
+              var roes_url = "Not available";
+              break;
+           }
         }
       }
 
