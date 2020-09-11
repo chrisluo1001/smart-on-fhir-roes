@@ -160,17 +160,17 @@
         var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3home" + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
         switch (true){
            case (typeof patient.l5 === "undefined" || patient.l5 === ""):{
-              alert('patient.i5 ');
+              alert('user last name is not available');
               var roes_url = "Not available";
               break;
            }
            case (typeof patient.dz === "undefined" || patient.dz === ""):{
-              alert('patient.dz ');
+              alert('user number is not available');
               var roes_url = "Not available";
               break;
            }
            case (typeof patient.sn === "undefined" || patient.sn === ""):{
-              alert('patient.sn ');
+              alert('Provider Organization Alias is not found.  Please contact your administrator to update and retry ROES.');
               var roes_url = "Not available";
               break;
            }
@@ -202,32 +202,32 @@
       + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
         switch (true){
            case (typeof patient.l5 === "undefined" || patient.l5 === ""):{
-              alert('patient.l5 ');
+              alert('user last name is not available');
               var roes_url = "Not available";
               break;
            }
            case (typeof patient.dz === "undefined" || patient.dz === ""):{
-              alert('patient.dz ');
+              alert('user number is not available');
               var roes_url = "Not available";
               break;
            }
            case (typeof patient.sn === "undefined" || patient.sn === ""):{
-              alert('patient.sn ');
+              alert('Provider Organization Alias is not found.  Please contact your administrator to update and retry ROES.');
               var roes_url = "Not available";
               break;
            }
            case (typeof icn === "undefined" || icn === ""):{
-              alert('patient.icn ');
+              alert('ICN is not found');
               var roes_url = "Not available";
               break;
            }
            case (typeof dob === "undefined" || dob === ""):{
-              alert('patient.dob ');
+              alert('patient date birth is not available');
               var roes_url = "Not available";
               break;
            }
            case (typeof nm === "undefined" || nm === ""):{
-              alert('patient.nm ');
+              alert('patient name is not available');
               var roes_url = "Not available";
               break;
            }
