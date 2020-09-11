@@ -34,7 +34,7 @@
               $.ajax(settings).done(function (response) {
                 console.log("prationer ajax call ");
                 console.log(response);
-                //alert(JSON.stringify(response));
+                alert(JSON.stringify(response));
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
                   patient.l5 = lName.substring(0, 5);
@@ -72,7 +72,7 @@
               $.ajax(settings).done(function (response) {
                 console.log("prationer ajax call ");
                 console.log(response);
-                //alert(JSON.stringify(response));
+                alert(JSON.stringify(response));
                 var patient = {} ;
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
@@ -90,7 +90,7 @@
         //onError();
       }
     }
-    alert("version 17");
+    alert("version 18");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
