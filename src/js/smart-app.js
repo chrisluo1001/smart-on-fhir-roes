@@ -90,7 +90,7 @@
         //onError();
       }
     }
-    alert("version 16");
+    alert("version 17");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -232,22 +232,22 @@
               break;
            }
            case (typeof l1 === "undefined" || l1 === ""):{
-              alert('patient.l1 ');
+              alert('Patient address is not available.  Please update the patient record and re-try ROES.');
               var roes_url = "Not available";
               break;
            }
            case (typeof ci === "undefined" || ci === ""):{
-              alert('patient.ci ');
+              alert('Patient address is not available.  Please update the patient record and re-try ROES.');
               var roes_url = "Not available";
               break;
            }
            case (typeof st === "undefined" || st === ""):{
-              alert('patient.st ');
+              alert('Patient address is not available.  Please update the patient record and re-try ROES.');
               var roes_url = "Not available";
               break;
            }
            case (typeof zp === "undefined" || zp === ""):{
-              alert('patient.zp ');
+              alert('Patient address is not available.  Please update the patient record and re-try ROES.');
               var roes_url = "Not available";
               break;
            }
