@@ -80,6 +80,7 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
+                  if (response.identifier[0].type.text === "OTHER")
                   var sn = response.identifier[0].value;
                 }
                 patient.dz = response.id;
