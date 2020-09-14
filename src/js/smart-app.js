@@ -257,7 +257,7 @@
       }
 
       if (roes_url !== "Not available") {
-        alert(roes_url);
+        //alert(roes_url);
         window.location.replace(roes_url);
       }
   };
