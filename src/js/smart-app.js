@@ -41,6 +41,7 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
+                  if (response.identifier[0].type.text === "OTHER")
                   var sn = response.identifier[0].value;
                 }
                 //var lName = "Yellowstone"
@@ -91,7 +92,7 @@
         //onError();
       }
     }
-    alert("version 18");
+    alert("version 19");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
