@@ -92,7 +92,7 @@
         //onError();
       }
     }
-    alert("version 19");
+    alert("version 20");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
@@ -256,8 +256,10 @@
         }
       }
 
-      alert(roes_url);
-      if (roes_url !== "Not available") window.location.replace(roes_url);
+      if (roes_url !== "Not available") {
+        alert(roes_url);
+        window.location.replace(roes_url);
+      }
   };
 
 })(window);
