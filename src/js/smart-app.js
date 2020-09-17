@@ -37,7 +37,16 @@
                 //alert(JSON.stringify(response));
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
-                  patient.l5 = lName.substring(0, 5);
+                  var fNames = response.name[0].given;
+                  var fName = fNames[0];
+                  patient.l5 = (lName+fName).substring(0, 5);
+                  if (patient.l5.length < 5) {
+                  	var count = 5 - patient.l5.length;
+                    while (count > 0) {
+                    	patient.l5 += "Z";
+                      count--;
+                    }
+                  }
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
@@ -77,7 +86,16 @@
                 var patient = {} ;
                 if (typeof response.name[0] !== 'undefined') {
                   var lName = response.name[0].family;
-                  if (lName != null) patient.l5 = lName.substring(0, 5);
+                  var fNames = response.name[0].given;
+                  var fName = fNames[0];
+                  patient.l5 = (lName+fName).substring(0, 5);
+                  if (patient.l5.length < 5) {
+                  	var count = 5 - patient.l5.length;
+                    while (count > 0) {
+                    	patient.l5 += "Z";
+                      count--;
+                    }
+                  }
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
