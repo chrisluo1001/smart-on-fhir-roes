@@ -50,7 +50,7 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                  if (response.identifier[0].type.text === "OTHER")
+                  if (typeof response.identifier[0].type !== 'undefined' && response.identifier[0].type !== null && response.identifier[0].type.text === "OTHER")
                   var sn = response.identifier[0].value;
                 }
                 //var lName = "Yellowstone"
