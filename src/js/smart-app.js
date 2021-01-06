@@ -177,7 +177,7 @@
       if (typeof patient.l5 !== 'undefined') var l5 = patient.l5.toUpperCase();;
       var sn = patient.sn;
       if (patient.noContext) {
-        var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3home" + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
+        var roes_url = env_url + "scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3home" + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
         switch (true){
            case (typeof patient.l5 === "undefined" || patient.l5 === ""):{
               alert('user last name is not available');
@@ -217,7 +217,7 @@
           var st = "1^" + patient.address[0].state;
           var zp = patient.address[0].postalCode;
         }
-        var roes_url = "https://vaww.dalctest.oamm.va.gov/scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient" + "&"
+        var roes_url = env_url + "scripts/mgwms32.dll?MGWLPN=ddcweb&wlapp=roes3patient" + "&"
       + "ICN=" + icn + "&" + "NM=" + nm + "&" + "DOB=" + dob + "&" + "L1=" + l1 + "&" + "CI=" + ci + "&" + "ST=" + st + "&"
       + "ZP=" + zp + "&" + "DZ=" + dz + "&" + "L5=" + l5 + "&" + "SN=" + sn;
         switch (true){
