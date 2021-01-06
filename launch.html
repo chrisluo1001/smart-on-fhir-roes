@@ -27,7 +27,7 @@
       else if (window.location.host == "localhost")
         env_url = 'http://localhost';
       localStorage.setItem("debug", "FHIR.*");
-      alert(env_url);
+      //alert(env_url);
       FHIR.oauth2.authorize({
         'client_id': env_url,
         //'scope':  'patient/Patient.read launch online_access openid profile'
