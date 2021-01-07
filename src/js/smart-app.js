@@ -10,6 +10,7 @@
     function onReady(smart)  {
       //alert(JSON.stringify(smart));
       //alert(JSON.stringify(smart.user));
+      alert(env_url);
       if (smart.hasOwnProperty('patient')) {
         console.log(JSON.stringify(smart));
         var patient = smart.patient;
