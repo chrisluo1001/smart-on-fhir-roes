@@ -21,15 +21,15 @@
 <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
 <script>
       if (window.location.host == "vaww.dalc.oamm.va.gov")
-        env_url = 'https://vaww.dalc.oamm.va.gov/';
+        env_clientId = '0c0ec006-6d61-4005-a3c9-4dcc576cfac7';
       else if (window.location.host == "vaww.dalctest.oamm.va.gov")
-        env_url = 'https://vaww.dalctest.oamm.va.gov/';
+        env_clientId = '47eb4ff7-6083-4227-baa1-6b134d177d97';
       else if (window.location.host == "localhost")
-        env_url = 'http://localhost';
+        env_clientId = 'localhost clientId';
       localStorage.setItem("debug", "FHIR.*");
       //alert(env_url);
       FHIR.oauth2.authorize({
-        'client_id': env_url,
+        'client_id': env_clientId,
         //'scope':  'patient/Patient.read launch online_access openid profile'
         'scope':  'user/Patient.read user/Practitioner.read launch online_access openid profile'
       });
