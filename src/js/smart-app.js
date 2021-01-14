@@ -51,7 +51,6 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                  alert("version: 1");
                   var ids = response.identifier.filter(id => id.type.text === 'OTHER' && id.value == '668');
                   if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
                 }
@@ -112,7 +111,7 @@
         //onError();
       }
     }
-    //alert("version 20");
+    alert("version 1");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
