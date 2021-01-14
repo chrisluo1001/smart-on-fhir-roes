@@ -51,8 +51,8 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                    var ids = res.identifier.filter(id => id.type.text === 'OTHER' && id.value == '668');
-                    if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
+                  var ids = response.identifier.filter(id => id.type.text === 'OTHER').filter(id => parseInt(id.value) < 1000);
+                  if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
                 }
                 //var lName = "Yellowstone"
                 patient.dz = response.id;
@@ -100,7 +100,7 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                    var ids = res.identifier.filter(id => id.type.text === 'OTHER' && id.value == '668');
+                    var ids = response.identifier.filter(id => id.type.text === 'OTHER').filter(id => parseInt(id.value) < 1000);
                     if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
                 }
                 patient.dz = response.id;
