@@ -51,8 +51,15 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                  var ids = response.identifier.filter(id => id.type.text === 'OTHER' && id.value == '668');
-                  if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
+                  var sn;
+                  response.identifier.forEach((id, index, array) => {
+                    if (id.type.text === 'OTHER' && id.value === '668')	
+                    {
+                      sn = '668';
+                    }
+                  });
+                  //var ids = response.identifier.filter(id => id.type.text === 'OTHER' && id.value == '668');
+                  //if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
                 }
                 //var lName = "Yellowstone"
                 patient.dz = response.id;
