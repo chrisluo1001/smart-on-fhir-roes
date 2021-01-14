@@ -51,8 +51,8 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                  if (typeof response.identifier[0].type !== 'undefined' && response.identifier[0].type !== null && response.identifier[0].type.text === "OTHER")
-                  var sn = response.identifier[0].value;
+                    var ids = response.identifier.filter(id => id.type.text === 'OTHER').filter(id => parseInt(id.value) < 1000);
+                    if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
                 }
                 //var lName = "Yellowstone"
                 patient.dz = response.id;
@@ -100,8 +100,8 @@
                 }
                 if (typeof response.identifier[0] !== 'undefined') {
                   //alert(response.identifier[0].value);
-                  if (typeof response.identifier[0].type !== 'undefined' && response.identifier[0].type !== null && response.identifier[0].type.text === "OTHER")
-                  var sn = response.identifier[0].value;
+                    var ids = response.identifier.filter(id => id.type.text === 'OTHER').filter(id => parseInt(id.value) < 1000);
+                    if (ids.type !== 'undefined' && ids.length > 0) var sn = ids[0].value;
                 }
                 patient.dz = response.id;
                 patient.sn = sn;
