@@ -112,7 +112,7 @@
                     if (response.identifier[i].type.text === 'OTHER' && response.identifier[i].value === '668')	
                     {
                       sn = '668';
-                      alert("test: " + sn);
+                      //alert("test: " + sn);
                     }  
                   }
                   //alert(response.identifier[0].value);
@@ -127,7 +127,7 @@
         //onError();
       }
     }
-    alert("version 1");
+    //alert("version 1");
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
   };
