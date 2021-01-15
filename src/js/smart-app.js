@@ -56,7 +56,7 @@
                     if (response.identifier[i].type.text === 'OTHER' && response.identifier[i].value === '668')	
                     {
                       sn = '668';
-                      alert("test: " + sn);
+                      //alert("test: " + sn);
                     }  
                   }
                   //var ids = response.identifier.filter(id => id.type.text === 'OTHER' && id.value == '668');
