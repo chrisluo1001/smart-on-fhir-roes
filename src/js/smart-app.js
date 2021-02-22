@@ -109,9 +109,9 @@
                 if (typeof response.identifier[0] !== 'undefined') {
                   var sn;
                   for(var i=0;i<response.identifier.length;i++) {
-                    if (response.identifier[i].type.text === 'OTHER' && response.identifier[i].value === '668')	
+                    if (response.identifier[i].type.text === 'OTHER' && response.identifier[i].value.startsWith("SN="))	
                     {
-                      sn = '668';
+                      sn = response.identifier[i].value.substring(3);
                       //alert("test: " + sn);
                     }  
                   }
